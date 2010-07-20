@@ -1,5 +1,5 @@
 package Music::Tag::OGG;
-our $VERSION = 0.32;
+our $VERSION = 0.33;
 
 # Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
 #
@@ -57,6 +57,7 @@ Uses MusicBrainz recommended tags for these.
 
 =cut
 use strict;
+use warnings;
 use Ogg::Vorbis::Header::PurePerl;
 
 our %tagmap = (
