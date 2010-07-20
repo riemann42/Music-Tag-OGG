@@ -1,3 +1,7 @@
+Release Name: 0.32
+===========================
+* Added Music::Tag prereq (was incorrect!)
+
 Release Name: 0.31
 ===========================
 * pod improvments

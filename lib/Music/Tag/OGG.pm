@@ -1,5 +1,5 @@
 package Music::Tag::OGG;
-our $VERSION = 0.31;
+our $VERSION = 0.32;
 
 # Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
 #

@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Music-Tag-OGG
-version:             0.31
+version:             0.32
 abstract:            Plugin module for Music::Tag to get information from ogg-vorbis headers. 
 license:             perl
 author:              
@@ -8,7 +8,7 @@ author:
 generated_by:        ExtUtils::MakeMaker version 6.42
 distribution_type:   module
 requires:     
-    MP3::Tag:                      0.29
+    Music::Tag:                    0.29
     Ogg::Vorbis::Header::PurePerl: 0.07
 meta-spec:
     url:     http://module-build.sourceforge.net/META-spec-v1.3.html

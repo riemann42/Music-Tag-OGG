@@ -1,5 +1,5 @@
-Music::Tag::OGG version 0.28
-==============================
+Music::Tag::OGG 
+===============
 
 Music::Tag::OGG Gather info from OGG Header. Uses Ogg::Vorbis::Header::PurePerl
 
