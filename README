@@ -1,45 +1,102 @@
-Music::Tag::OGG 
-===============
+NAME
+    Music::Tag::OGG - Plugin module for Music::Tag to get information from
+    ogg-vorbis headers.
 
-Music::Tag::OGG Gather info from OGG Header. Uses Ogg::Vorbis::Header::PurePerl
+SYNOPSIS
+            use Music::Tag
 
-Note:  As of version 0.28, Music-Tag is distributed as seperate packages.
+            my $filename = "/var/lib/music/artist/album/track.ogg";
 
-INSTALLATION
+            my $info = Music::Tag->new($filename, { quiet => 1 }, "OGG");
 
-To install this module type the following:
+            $info->get_info();
+   
+            print "Artist is ", $info->artist;
 
-   perl Makefile.PL
-   make
-   make test
-   make install
+DESCRIPTION
+    Music::Tag::OGG is used to read ogg-vorbis header information. It uses
+    Ogg::Vorbis::Header::PurePerl. I have gone back and forth with using
+    this and Ogg::Vorbis::Header. Finally I have settled on
+    Ogg::Vorbis::Header::PurePerl, because the autoload for
+    Ogg::Vorbis::Header was a pain to work with.
 
-DEPENDENCIES
+    To write Ogg::Vorbis headers I use the program vorbiscomment. It looks
+    for this in the path, or in the option variable "vorbiscomment." This
+    tool is available from http://www.xiph.org/ as part of the vorbis-tools
+    distribution.
 
-This module requires these other modules and libraries:
+    Music::Tag::Ogg objects must be created by Music::Tag.
 
-   Music::Tag
-   Ogg::Vorbis::Header::PurePerl
+REQUIRED DATA VALUES
+    No values are required (except filename, which is usually provided on
+    object creation).
 
-NOTE ON WRITE SUPPORT
+SET DATA VALUES
+    title, track, totaltracks, artist, album, comment, releasedate, genre,
+    disc, label
+        Uses standard tags for these
 
-I have had trouble with Ogg::Vorbis::Header.  As such, I have stoped using it. 
-I now use OGG::Vorbis::PurePerl. This module is also buggy, and doesn't have
-write support.  To overcome this limitation, for now, I am using the
-vorbiscomment program that is part of the vorbis-tools package from xiph.org.
+    asin
+        Uses custom tag "ASIN" for this
 
-I am planning on adding write support to Ogg::Vorbis::PurePerl someday.
+    mb_artistid, mb_albumid, mb_trackid, mip_puid, countrycode, albumartist
+        Uses MusicBrainz recommended tags for these.
 
-TEST FILES
+METHODS
+    default_options
+        Returns the default options for the plugin.
 
-Are based on the sample file for Audio::M4P.  For testing only.
+    set_tag
+        Save info from object back to ogg vorbis file using vorbiscomment
 
-COPYRIGHT AND LICENCE
+    get_tag
+        Get info for object from ogg vorbis header using
+        Ogg::Vorbis::Header::PurePerl
 
-Copyright (C) 2007 Edward J. Allen III
-ealleniii _at_ cpan _dot_ org
+    close
+        Close the file and destroy the Ogg::Vorbis::Header::PurePerl object.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.7 or,
-at your option, any later version of Perl 5 you may have available.
+    ogg Returns the Ogg::Vorbis::Header::PurePerl object.
+
+OPTIONS
+    vorbiscomment
+        The full path to the vorbiscomment program. Defaults to just
+        "vorbiscomment", which assumes that vorbiscomment is in your path.
+
+BUGS
+    No known additional bugs provided by this Module
+
+SEE ALSO
+    Ogg::Vorbis::Header::PurePerl, Music::Tag, http://www.xiph.org/
+
+AUTHOR
+    Edward Allen III <ealleniii _at_ cpan _dot_ org>
+
+COPYRIGHT
+    Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
+
+LICENSE
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself, either:
+
+    a) the GNU General Public License as published by the Free Software
+    Foundation; either version 1, or (at your option) any later version, or
+
+    b) the "Artistic License" which comes with Perl.
+
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See either the GNU
+    General Public License or the Artistic License for more details.
+
+    You should have received a copy of the Artistic License with this Kit,
+    in the file named "Artistic". If not, I'll be glad to provide one.
+
+    You should also have received a copy of the GNU General Public License
+    along with this program in the file named "Copying". If not, write to
+    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301, USA or visit their web page on the Internet at
+    http://www.gnu.org/copyleft/gpl.html.
+
+    # vim: tabstop=4
 

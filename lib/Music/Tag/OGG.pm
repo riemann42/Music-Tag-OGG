@@ -1,5 +1,5 @@
 package Music::Tag::OGG;
-our $VERSION = 0.34;
+our $VERSION = 0.35;
 
 # Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
 
@@ -95,7 +95,7 @@ sub ogg {
 	unless ((exists $self->{_OGG}) && (ref $self->{_OGG})) {
 		if ($self->info->filename) {
 			$self->{_OGG} = Ogg::Vorbis::Header::PurePerl->new($self->info->filename);
-			$self->{_OGG}->load();
+			#$self->{_OGG}->load();
 
 		}
 		else {
