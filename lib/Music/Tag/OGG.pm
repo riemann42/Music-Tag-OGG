@@ -1,5 +1,5 @@
 package Music::Tag::OGG;
-our $VERSION = 0.30;
+our $VERSION = 0.31;
 
 # Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
 #
@@ -42,15 +42,15 @@ No values are required (except filename, which is usually provided on object cre
 
 =over 4
 
-=item title, track, totaltracks, artist, album, comment, releasedate, genre, disc, label
+=item B<title, track, totaltracks, artist, album, comment, releasedate, genre, disc, label>
 
 Uses standard tags for these
 
-=item asin
+=item B<asin>
 
 Uses custom tag "ASIN" for this
 
-=item mb_artistid, mb_albumid, mb_trackid, mip_puid, countrycode, albumartist
+=item B<mb_artistid, mb_albumid, mb_trackid, mip_puid, countrycode, albumartist>
 
 Uses MusicBrainz recommended tags for these.
 
@@ -153,23 +153,23 @@ sub close {
 
 =over 4
 
-=item default_options
+=item B<default_options>
 
 Returns the default options for the plugin.  
 
-=item set_tag
+=item B<set_tag>
 
 Save info from object back to ogg vorbis file using L<vorbiscomment> 
 
-=item get_tag
+=item B<get_tag>
 
 Get info for object from ogg vorbis header using Ogg::Vorbis::Header::PurePerl
 
-=item close
+=item B<close>
 
 Close the file and destroy the Ogg::Vorbis::Header::PurePerl object. 
 
-=item ogg
+=item B<ogg>
 
 Returns the Ogg::Vorbis::Header::PurePerl object.
 
@@ -180,7 +180,7 @@ Returns the Ogg::Vorbis::Header::PurePerl object.
 
 =over 4
 
-=item vorbiscomment
+=item B<vorbiscomment>
 
 The full path to the vorbiscomment program.  Defaults to just "vorbiscomment", which assumes that vorbiscomment is in your path.
 
