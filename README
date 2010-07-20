@@ -1,0 +1,45 @@
+Music::Tag::OGG version 0.28
+==============================
+
+Music::Tag::OGG Gather info from OGG Header. Uses Ogg::Vorbis::Header::PurePerl
+
+Note:  As of version 0.28, Music-Tag is distributed as seperate packages.
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires these other modules and libraries:
+
+   Music::Tag
+   Ogg::Vorbis::Header::PurePerl
+
+NOTE ON WRITE SUPPORT
+
+I have had trouble with Ogg::Vorbis::Header.  As such, I have stoped using it. 
+I now use OGG::Vorbis::PurePerl. This module is also buggy, and doesn't have
+write support.  To overcome this limitation, for now, I am using the
+vorbiscomment program that is part of the vorbis-tools package from xiph.org.
+
+I am planning on adding write support to Ogg::Vorbis::PurePerl someday.
+
+TEST FILES
+
+Are based on the sample file for Audio::M4P.  For testing only.
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2007 Edward J. Allen III
+ealleniii _at_ cpan _dot_ org
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.7 or,
+at your option, any later version of Perl 5 you may have available.
+
