@@ -1,12 +1,13 @@
 package Music::Tag::OGG;
-our $VERSION = 0.33;
+our $VERSION = 0.34;
 
 # Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
+
 #
-## This program is free software; you can redistribute it and/or
-## modify it under the terms of the Artistic License, distributed
-## with Perl.
+# You may distribute under the terms of either the GNU General Public
+# License or the Artistic License, as specified in the README file.
 #
+
 
 =pod
 
@@ -28,17 +29,19 @@ Music::Tag::OGG - Plugin module for Music::Tag to get information from ogg-vorbi
 
 =head1 DESCRIPTION
 
-Music::Tag::OGG is used to read ogg-vorbis header information. It uses Ogg::Vorbis::Header::PurePerl.  I have gone back and forth with using this
+Music::Tag::OGG is used to read ogg-vorbis header information. It uses Ogg::Vorbis::Header::PurePerl. I have gone back and forth with using this
 and Ogg::Vorbis::Header.  Finally I have settled on Ogg::Vorbis::Header::PurePerl, because the autoload for Ogg::Vorbis::Header was a pain to work with.
 
 To write Ogg::Vorbis headers I use the program vorbiscomment.  It looks for this in the path, or in the option variable "vorbiscomment."  This tool
 is available from L<http://www.xiph.org/> as part of the vorbis-tools distribution.
 
-=head1 REQUIRED VALUES
+Music::Tag::Ogg objects must be created by Music::Tag.
+
+=head1 REQUIRED DATA VALUES
 
 No values are required (except filename, which is usually provided on object creation).
 
-=head1 SET VALUES
+=head1 SET DATA VALUES
 
 =over 4
 
@@ -193,24 +196,44 @@ No known additional bugs provided by this Module
 
 =head1 SEE ALSO
 
-L<Ogg::Vorbis::Header::PurePerl>, L<Music::Tag>, L<Music::Tag::Amazon>, L<Music::Tag::File>, L<Music::Tag::FLAC>, L<Music::Tag::Lyrics>,
-L<Music::Tag::M4A>, L<Music::Tag::MP3>, L<Music::Tag::MusicBrainz>, L<Music::Tag::Option>
+L<Ogg::Vorbis::Header::PurePerl>, L<Music::Tag>, L<http://www.xiph.org/> 
 
 =head1 AUTHOR 
 
 Edward Allen III <ealleniii _at_ cpan _dot_ org>
-
-=head1 LICENSE
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the Artistic License, distributed
-with Perl.
 
 =head1 COPYRIGHT
 
 Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
 
 =cut
+
+=head1 LICENSE
+
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either:
+
+a) the GNU General Public License as published by the Free
+Software Foundation; either version 1, or (at your option) any
+later version, or
+
+b) the "Artistic License" which comes with Perl.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either
+the GNU General Public License or the Artistic License for more details.
+
+You should have received a copy of the Artistic License with this
+Kit, in the file named "Artistic".  If not, I'll be glad to provide one.
+
+You should also have received a copy of the GNU General Public License
+along with this program in the file named "Copying". If not, write to the
+Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+Boston, MA 02110-1301, USA or visit their web page on the Internet at
+http://www.gnu.org/copyleft/gpl.html.
+
+
 
 
 # vim: tabstop=4
