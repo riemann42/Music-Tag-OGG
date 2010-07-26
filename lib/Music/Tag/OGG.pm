@@ -39,7 +39,14 @@ sub default_options {
 	{ vorbiscomment => "vorbiscomment" }
 }
 
+sub set_values {
+	return ( values %tagmap, 'picture');
+}
 
+sub saved_values {
+	return ( values %tagmap, 'picture');
+}
+ 
 sub ogg {
 	my $self = shift;
 	unless ((exists $self->{_OGG}) && (ref $self->{_OGG})) {
@@ -156,23 +163,31 @@ Uses MusicBrainz recommended tags for these.
 
 =over 4
 
-=item B<default_options>
+=item B<default_options()>
 
 Returns the default options for the plugin.  
 
-=item B<set_tag>
+=item B<set_tag()>
 
 Save info from object back to ogg vorbis file using L<vorbiscomment> 
 
-=item B<get_tag>
+=item B<get_tag()>
 
 Get info for object from ogg vorbis header using Ogg::Vorbis::Header::PurePerl
 
-=item B<close>
+=item B<set_values()>
+
+A list of values that can be set by this module.
+
+=item B<saved_values()>
+
+A list of values that can be saved by this module.
+
+=item B<close()>
 
 Close the file and destroy the Ogg::Vorbis::Header::PurePerl object. 
 
-=item B<ogg>
+=item B<ogg()>
 
 Returns the Ogg::Vorbis::Header::PurePerl object.
 
