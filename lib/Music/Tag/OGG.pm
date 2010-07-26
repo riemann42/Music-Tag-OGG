@@ -1,4 +1,6 @@
 package Music::Tag::OGG;
+use strict;
+use warnings;
 our $VERSION = 0.35;
 
 # Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
@@ -7,6 +9,9 @@ our $VERSION = 0.35;
 # You may distribute under the terms of either the GNU General Public
 # License or the Artistic License, as specified in the README file.
 #
+
+use Ogg::Vorbis::Header::PurePerl;
+use base qw(Music::Tag::Generic);
 
 
 our %tagmap = (
@@ -34,7 +39,6 @@ sub default_options {
 	{ vorbiscomment => "vorbiscomment" }
 }
 
-use base qw(Music::Tag::Generic);
 
 sub ogg {
 	my $self = shift;
@@ -196,7 +200,7 @@ L<Ogg::Vorbis::Header::PurePerl>, L<Music::Tag>, L<http://www.xiph.org/>
 
 Source is available at github: L<http://github.com/riemann42/Music-Tag-OGG|http://github.com/riemann42/Music-Tag-OGG>.
 
-=head1 BUGTRACKING
+=head1 BUG TRACKING
 
 Please use github for bug tracking: L<http://github.com/riemann42/Music-Tag-OGG/issues|http://github.com/riemann42/Music-Tag-OGG/issues>.
 
