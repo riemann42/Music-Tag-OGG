@@ -1,7 +1,7 @@
 package Music::Tag::OGG;
 use strict;
 use warnings;
-our $VERSION = 0.35;
+our $VERSION = .40_01;
 
 # Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
 
