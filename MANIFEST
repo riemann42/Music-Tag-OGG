@@ -1,4 +1,4 @@
-Changes
+CHANGES
 lib/Music/Tag/.OGG.pm.swp
 lib/Music/Tag/OGG.pm
 Makefile.PL
@@ -6,8 +6,6 @@ MANIFEST			This list of files
 META.yml			Module meta-data (added by MakeMaker)
 README
 t/1-ogg.t
-t/2-pod.t
-t/3-pod-coverage.t
 t/97-pod.t
 t/98-pod-coverage.t
 t/elise.ogg

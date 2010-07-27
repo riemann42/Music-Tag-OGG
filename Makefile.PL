@@ -4,7 +4,7 @@ WriteMakefile( NAME         => "Music::Tag::OGG",
                ABSTRACT_FROM => "lib/Music/Tag/OGG.pm",
                AUTHOR       => 'Edward Allen (ealleniii _at_ cpan _dot_ org)',
 			   LICENSE		=> 'perl',
-               PREREQ_PM => { 'Music::Tag'				=> 0.29,
+               PREREQ_PM => { 'Music::Tag'				=> 0.40_01,
 							  'Ogg::Vorbis::Header::PurePerl'		=> 1,
                             },
              );
