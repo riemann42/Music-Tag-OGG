@@ -1,18 +1,14 @@
 package Music::Tag::OGG;
-use strict;
-use warnings;
-our $VERSION = .40_02;
+use strict; use warnings; use utf8;
+our $VERSION = '.4101';
 
-# Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
-
+# Copyright © 2007,2008,2010 Edward Allen III. Some rights reserved.
 #
 # You may distribute under the terms of either the GNU General Public
 # License or the Artistic License, as specified in the README file.
-#
 
 use Ogg::Vorbis::Header::PurePerl;
 use base qw(Music::Tag::Generic);
-
 
 our %tagmap = (
 	TITLE	=> 'title',
@@ -50,8 +46,8 @@ sub saved_values {
 sub ogg {
 	my $self = shift;
 	unless ((exists $self->{_OGG}) && (ref $self->{_OGG})) {
-		if ($self->info->filename) {
-			$self->{_OGG} = Ogg::Vorbis::Header::PurePerl->new($self->info->filename);
+		if ($self->info->get_data('filename')) {
+			$self->{_OGG} = Ogg::Vorbis::Header::PurePerl->new($self->info->get_data('filename'));
 			#$self->{_OGG}->load();
 		}
 		else {
@@ -68,15 +64,15 @@ sub get_tag {
 			my $comment = uc($_);
 			if (exists $tagmap{$comment}) {
 				my $method = $tagmap{$comment};
-				$self->info->$method($self->ogg->comment($comment));
+				$self->info->set_data($method, $self->ogg->comment($comment));
 			}
 			else {
 				$self->status("Unknown comment: $comment");
 			}
 		}
-        $self->info->secs( $self->ogg->info->{"length"});
-        $self->info->bitrate( $self->ogg->info->{"bitrate_nominal"});
-        $self->info->frequency( $self->ogg->info->{"rate"});
+        $self->info->set_data('secs',$self->ogg->info->{"length"});
+        $self->info->set_data('bitrate',$self->ogg->info->{"bitrate_nominal"});
+        $self->info->set_data('frequency',$self->ogg->info->{"rate"});
 	}
 	else {
 		print STDERR "No ogg object created\n";
@@ -87,13 +83,13 @@ sub get_tag {
 
 sub set_tag {
     my $self = shift;
-	unless (open(COMMENT, "|-", $self->options->{vorbiscomment} ." -w ". "\"". $self->info->filename . "\"")) {
+	unless (open(COMMENT, "|-", $self->options->{vorbiscomment} ." -w ". "\"". $self->info->get_data('filename') . "\"")) {
 		$self->status("Failed to open ", $self->options->{vorbiscomment}, ".  Not writing tag.\n");
 		return undef;
 	}
 	while (my ($t, $m) = each %tagmap) {
-		if (defined $self->info->$m) {
-			print COMMENT $t, "=", $self->info->$m, "\n";
+		if (defined $self->info->get_data($m)) {
+			print COMMENT $t, "=", $self->info->get_data($m), "\n";
 		}
 	}
 	close (COMMENT);
@@ -207,6 +203,8 @@ The full path to the vorbiscomment program.  Defaults to just "vorbiscomment", w
 
 No known additional bugs provided by this Module
 
+Please use github for bug tracking: L<http://github.com/riemann42/Music-Tag-OGG/issues|http://github.com/riemann42/Music-Tag-OGG/issues>.
+
 =head1 SEE ALSO
 
 L<Ogg::Vorbis::Header::PurePerl>, L<Music::Tag>, L<http://www.xiph.org/> 
@@ -215,17 +213,13 @@ L<Ogg::Vorbis::Header::PurePerl>, L<Music::Tag>, L<http://www.xiph.org/>
 
 Source is available at github: L<http://github.com/riemann42/Music-Tag-OGG|http://github.com/riemann42/Music-Tag-OGG>.
 
-=head1 BUG TRACKING
-
-Please use github for bug tracking: L<http://github.com/riemann42/Music-Tag-OGG/issues|http://github.com/riemann42/Music-Tag-OGG/issues>.
-
 =head1 AUTHOR 
 
 Edward Allen III <ealleniii _at_ cpan _dot_ org>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2007,2008 Edward Allen III. Some rights reserved.
+Copyright © 2007,2008,2010 Edward Allen III. Some rights reserved.
 
 =head1 LICENSE
 
