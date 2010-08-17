@@ -8,7 +8,6 @@ t/1-ogg.t
 t/97-pod.t
 t/98-pod-coverage.t
 t/elise.ogg
-t/MusicTagTest.pm
 t/options.conf
 Copying
 Artistic
