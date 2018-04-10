@@ -64,7 +64,10 @@ sub get_tag {
 			my $comment = uc($_);
 			if (exists $tagmap{$comment}) {
 				my $method = $tagmap{$comment};
-				$self->info->set_data($method, $self->ogg->comment($comment));
+				my $value = $self->ogg->comment($comment);
+				if (defined($value) && length($value)) {
+					$self->info->set_data($method, $self->ogg->comment($comment));
+				}
 			}
 			else {
 				$self->status("Unknown comment: $comment");
